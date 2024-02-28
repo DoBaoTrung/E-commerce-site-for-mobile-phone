@@ -9,3 +9,5 @@ Bảng trung gian:
 products và sizes: m-m
 - products_size
 - products_color
+
+composer require spatie/laravel-sluggable

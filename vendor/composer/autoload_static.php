@@ -96,6 +96,7 @@ class ComposerStaticInit31ea39bffac91ddfb9f838223e5c3d6e
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\Sluggable\\' => 17,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
@@ -344,6 +345,10 @@ class ComposerStaticInit31ea39bffac91ddfb9f838223e5c3d6e
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Spatie\\Sluggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-sluggable/src',
         ),
         'Spatie\\LaravelIgnition\\' => 
         array (
@@ -635,16 +640,19 @@ class ComposerStaticInit31ea39bffac91ddfb9f838223e5c3d6e
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Enums\\OrderStatusEnum' => __DIR__ . '/../..' . '/app/Enums/OrderStatusEnum.php',
         'App\\Events\\client\\auth\\UserRegisterEvent' => __DIR__ . '/../..' . '/app/Events/client/auth/UserRegisterEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/AuthController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
         'App\\Http\\Controllers\\Admin\\ManufacturerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ManufacturerController.php',
+        'App\\Http\\Controllers\\Admin\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OrderController.php',
         'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Client\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Client/Auth/AuthController.php',
         'App\\Http\\Controllers\\Client\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Client/CartController.php',
         'App\\Http\\Controllers\\Client\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Client/HomeController.php',
+        'App\\Http\\Controllers\\Client\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Client/OrderController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -668,6 +676,7 @@ class ComposerStaticInit31ea39bffac91ddfb9f838223e5c3d6e
         'App\\Http\\Requests\\admin\\profile\\UpdateProfileRequest' => __DIR__ . '/../..' . '/app/Http/Requests/admin/profile/UpdateProfileRequest.php',
         'App\\Http\\Requests\\admin\\users\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/admin/users/StoreUserRequest.php',
         'App\\Http\\Requests\\admin\\users\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/admin/users/UpdateUserRequest.php',
+        'App\\Http\\Requests\\client\\CheckFormOrderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/client/CheckFormOrderRequest.php',
         'App\\Http\\Requests\\client\\auth\\CheckLoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/client/auth/CheckLoginRequest.php',
         'App\\Http\\Requests\\client\\auth\\CheckRegisterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/client/auth/CheckRegisterRequest.php',
         'App\\Listeners\\client\\UserRegisterSendMailListener' => __DIR__ . '/../..' . '/app/Listeners/client/UserRegisterSendMailListener.php',
@@ -6224,6 +6233,10 @@ class ComposerStaticInit31ea39bffac91ddfb9f838223e5c3d6e
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\Sluggable\\Exceptions\\InvalidOption' => __DIR__ . '/..' . '/spatie/laravel-sluggable/src/Exceptions/InvalidOption.php',
+        'Spatie\\Sluggable\\HasSlug' => __DIR__ . '/..' . '/spatie/laravel-sluggable/src/HasSlug.php',
+        'Spatie\\Sluggable\\HasTranslatableSlug' => __DIR__ . '/..' . '/spatie/laravel-sluggable/src/HasTranslatableSlug.php',
+        'Spatie\\Sluggable\\SlugOptions' => __DIR__ . '/..' . '/spatie/laravel-sluggable/src/SlugOptions.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

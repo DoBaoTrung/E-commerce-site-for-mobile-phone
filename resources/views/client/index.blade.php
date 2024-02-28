@@ -46,7 +46,7 @@
                                     <div class="card-body">
                                         <h5 style="font-size: 16px;" class="card-title">{{ $product->name }}</h5>
                                         <p class="card-text fw-bold">{{ formatNumberPrice($product->price) . '₫' }}</p>
-                                        <a href="{{ route('client.product.show', ['id' => $product->id]) }}" class="btn btn-secondary">Xem chi tiết</a>
+                                        <a href="{{ route('client.product.show', ['slug' => $product->slug]) }}" class="btn btn-secondary">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </div>

@@ -15,6 +15,7 @@ class HomeController extends Controller
         $keySearch = $request->get('search-product');
         // dd($keySearch);
         $products = Product::query()->where('name', 'LIKE', '%' . $keySearch . '%')->get();
+        // dd($products);
         $manufacturers = Manufacturer::all();
         return view('client.index', [
             'products' => $products,
@@ -22,9 +23,17 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show($id)
+    // public function showProductDetail($id)
+    // {
+    //     $product = Product::where('id', $id)->first();
+    //     return view('client.product-detail', [
+    //         'product' => $product
+    //     ]);
+    // }
+
+    public function showProductDetailBySlug($slug)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::where('slug', $slug)->first();
         return view('client.product-detail', [
             'product' => $product
         ]);
