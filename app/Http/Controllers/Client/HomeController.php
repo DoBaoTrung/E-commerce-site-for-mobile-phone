@@ -12,10 +12,14 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        $keyword = $request->input('search-product');
+        // dd($keyword);
         $keySearch = $request->get('search-product');
         // dd($keySearch);
-        $products = Product::query()->where('name', 'LIKE', '%' . $keySearch . '%')->get();
+        $products = Product::query()->where('name', 'LIKE', '%' . $keySearch . '%')->paginate(8);
         // dd($products);
+        $products->appends(['search-product' => $keyword]);
+
         $manufacturers = Manufacturer::all();
         return view('client.index', [
             'products' => $products,

@@ -35,7 +35,7 @@
                         @foreach ($cartItems as $product_id => $cartItem)
                             <tr>
                                 <td>
-                                    <a class="cart-product-link" href="{{ route('client.product.show', ['id' => $product_id]) }}">
+                                    <a class="cart-product-link" href="{{ route('client.product.show', ['slug' => $cartItem['slug']]) }}">
                                         {{ $cartItem['product_name'] }}
                                     </a>
                                 </td>

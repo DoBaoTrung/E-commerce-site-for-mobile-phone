@@ -27,6 +27,7 @@ class CartController extends Controller
             $product = Product::find($product_id);
             $cartView[$product_id] = [
                 'product_name' => $product->name,
+                'slug' => $product->slug,
                 'avatar' => $cartItem->pivot->avatar,
                 'description' => $cartItem->pivot->description,
                 'quantity' => $cartItem->pivot->quantity,
@@ -78,7 +79,7 @@ class CartController extends Controller
             $cart->products()->attach($productId, $data);
         }
 
-        return redirect()->route('client.product.show', ['id' => $product->id]);
+        return redirect()->route('client.product.show', ['slug' => $product->slug]);
     }
 
     public function calculateTotalPrice($cartItems)

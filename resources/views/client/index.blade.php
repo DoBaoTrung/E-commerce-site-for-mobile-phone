@@ -52,6 +52,9 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="paginate mt-3 d-flex justify-content-center">
+                        {{ $products->links() }}
+                    </div>
                 </div>
             </div>
         </div>
