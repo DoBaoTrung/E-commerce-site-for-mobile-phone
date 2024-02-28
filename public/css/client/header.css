@@ -1,0 +1,52 @@
+.user-nav {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.user-nav::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 30px;
+    background-color: red;
+}
+
+.user-subnav {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: display 0.5s ease;
+}
+
+.user-nav:hover .user-subnav {
+    display: block;
+}
+
+.user-subnav li a {
+    color: #000;
+}
+
+.user-subnav li {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+}
+
+.user-subnav li:hover,
+.user-subnav li:hover a {
+    color: #ccc;
+}
+
+.user-subnav::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px;
+    top: -10px;
+    position: absolute;
+    /* background-color: red; */
+}
