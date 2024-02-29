@@ -120,6 +120,10 @@ Route::group(['middleware' => ['auth.client.login'], 'as' => 'client.'], functio
     Route::get('/cart/order-info', [CartController::class, 'orderInfo'])->name('cart.orderInfo');
     Route::post('/cart/order-info', [CartController::class, 'orderProcess'])->name('cart.orderProcess');
 
-    // Route xem đơn đã đặt
-    Route::get('/check-order', [ClientOrderController::class, 'index'])->name('order.index');
+    Route::group(['as' => 'order.'], function() {
+        // Route kiểm tra đơn hàng
+        Route::get('/checkout-order', [ClientOrderController::class, 'checkoutOrder'])->name('checkoutOrder');
+        // Route xem đơn đã đặt
+        Route::get('/view-order', [ClientOrderController::class, 'index'])->name('index');
+    });
 });

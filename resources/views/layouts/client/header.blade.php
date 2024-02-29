@@ -21,7 +21,7 @@
         <div class="authentication col-lg-3 d-flex justify-content-end">
             @if (Auth::check())
                 <div class="check-order">
-                    <a href="" class="text-white text-decoration-none">
+                    <a href="{{ route('client.order.checkoutOrder') }}" class="text-white text-decoration-none">
                         <i class="fas fa-truck"></i>
                         <span class="mx-2">Kiểm tra đơn hàng</span>
                     </a>

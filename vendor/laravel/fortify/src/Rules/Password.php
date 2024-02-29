@@ -15,7 +15,7 @@ class Password implements Rule
      *
      * @var int
      */
-    protected $length = 8;
+    protected $length = 4;
 
     /**
      * Indicates if the password must contain one uppercase character.
