@@ -9,6 +9,7 @@
         "bensampo/laravel-enum": "^6.10",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^3.4",
+        "laravel/fortify": "^1.20",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",

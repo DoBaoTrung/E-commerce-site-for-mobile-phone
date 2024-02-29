@@ -71,7 +71,7 @@
                     </div>
                     <div class="no-account text-center d-flex justify-content-center">
                         <p class="px-1" style="border-right: 2px solid #ccc;" >Don't have account? <a class="text-decoration-none" href="{{ route('client.register') }}">Register</a></p>
-                        <a class="mx-2 text-decoration-none" href="#">Quên mật khẩu?</a>
+                        <a class="mx-2 text-decoration-none" href="{{ route('password.request') }}">Quên mật khẩu?</a>
                     </div>
                 </form>
             </div>

@@ -27,6 +27,20 @@ class HomeController extends Controller
         ]);
     }
 
+    public function filterProductsByManufacturer($manufacturerSlug)
+    {
+        // dd($manufacturerSlug);
+        $manufacturers = Manufacturer::all();
+        $manufacturer = Manufacturer::query()->where('name', $manufacturerSlug)->first();
+        $products = Product::query()->where('manufacturer_id', $manufacturer->id)->paginate(18);
+
+        // return response()->json(['message' => 'success', 'data' => $products], 200);
+        return view('client.filter-products', [
+            'manufacturers' => $manufacturers,
+            'products' => $products
+        ]);
+    }
+
     // public function showProductDetail($id)
     // {
     //     $product = Product::where('id', $id)->first();

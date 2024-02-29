@@ -11,3 +11,5 @@ products và sizes: m-m
 - products_color
 
 composer require spatie/laravel-sluggable
+
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider

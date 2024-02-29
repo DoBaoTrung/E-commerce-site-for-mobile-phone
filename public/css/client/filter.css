@@ -1,0 +1,15 @@
+.brand-item {
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.brand-item a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}

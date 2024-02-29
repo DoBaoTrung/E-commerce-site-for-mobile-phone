@@ -33,3 +33,26 @@
     content: "";
     background-color: rgba(0, 0, 0, 0.4);
 } */
+
+/* .category-product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-product-list .category-product-item {
+    border-bottom: 1px solid #ccc;
+} */
+
+.category-product-list .category-product-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.category-product-list .category-product-item a {
+    display: block;
+    color: #000;
+}
+
+.category-product-list .category-product-item a:hover {
+    opacity: 0.6;
+}
+

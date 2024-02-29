@@ -95,6 +95,9 @@ Route::get('/', [ClientHomeController::class, 'index'])->name('client.home');
 // Route::get('/product/{id}', [ClientHomeController::class, 'showProductDetail'])->name('client.product.show');
 Route::get('/product/{slug}', [ClientHomeController::class, 'showProductDetailBySlug'])->name('client.product.show');
 
+// Route filter sản phẩm theo nhà sản xuất
+Route::get('/products/{slug}', [ClientHomeController::class, 'filterProductsByManufacturer'])->name('client.filterProductsByManufacturer');
+
 // Route chưa đăng nhập
 Route::group(['middleware' => ['auth.client.loginned'], 'as' => 'client.'], function () {
     // Route::get('/login', [ClientAuthController::class, 'login'])->name('login');

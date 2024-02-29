@@ -39,8 +39,8 @@
                                 type="button" role="tab">Contact</button>
                         </div>
                     </nav>
-                    <div class="tab-content w-75 mx-auto" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel">abc</div>
+                    <div class="tab-content mt-3 w-75 mx-auto" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel">{{ $product->description }}</div>
                         <div class="tab-pane fade" id="nav-comment" role="tabpanel">
                             <h4 class="mt-3">Comments</h4>
                             <div class="textarea-comment">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel">ghk</div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel">Liên hệ</div>
                     </div>
                 </div>
             </div>
