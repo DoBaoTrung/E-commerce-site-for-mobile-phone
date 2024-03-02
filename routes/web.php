@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\StorageCapacityController;
 use App\Http\Controllers\Client\Auth\AuthController as ClientAuthController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\HomeController as ClientHomeController;
@@ -84,6 +85,28 @@ Route::group(['middleware' => 'auth.admin.login', 'prefix' => 'admin', 'as' => '
 
         Route::get('/show/{orderId}', [OrderController::class, 'show'])->name('show');
     });
+
+    // Route quản lý dung lượng sản phẩm
+    Route::group(['prefix' => 'storageCapacities', 'as' => 'storageCapacities.'], function() {
+        Route::get('/', [StorageCapacityController::class, 'index'])->name('index');
+
+        // Route api lấy dữ liệu về
+        Route::get('/api', [StorageCapacityController::class, 'getData'])->name('indexAPI');
+
+        Route::get('/create', [StorageCapacityController::class, 'create'])->name('create');
+        // Route api thêm dữ liệu
+        Route::post('/api/create', [StorageCapacityController::class, 'addCapacity'])->name('storeAPI');
+
+        Route::get('/edit/{capacityId}', [StorageCapacityController::class, 'edit'])->name('edit');
+        // Route::put('/edit/{capacityId}', [StorageCapacityController::class, 'update'])->name('update');
+        // Route api cập nhật dữ liệu
+        Route::put('/edit/api/{capacityId}', [StorageCapacityController::class, 'updateCapacity'])->name('updateAPI');
+
+        // Route api xóa dữ liệu
+        Route::delete('/api/destroy/{capacityId}', [StorageCapacityController::class, 'destroyCapacity'])->name('destroyAPI');
+    });
+
+    // Route quản lý màu sắc sản phẩm
 });
 
 // Phía client

@@ -56,9 +56,9 @@
                         </a>
                     </li>
                     <li class="nav-item menu">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.storageCapacities.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-ruler"></i>
-                            <p>Sizes</p>
+                            <p>Storage Capacities</p>
                         </a>
                     </li>
                     <li class="nav-item menu">

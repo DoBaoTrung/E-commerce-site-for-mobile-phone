@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->unsignedBigInteger('price');
             $table->text('description')->nullable();
-            $table->foreignId('manufacturer_id')->constrained('manufacturers');
+            $table->foreignId('manufacturer_id')->constrained('manufacturers')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -100,6 +100,7 @@
         $(document).ready(function() {
             const routeLogin = '{{ route('client.processLogin') }}';
             $('.btn-login').click(function() {
+                // console.log($('#login-form').serialize());
                 event.preventDefault();
                 $.ajax({
                     url: routeLogin,
