@@ -28,7 +28,10 @@ class StorageCapacityController extends Controller
 
     public function index()
     {
-        return view('admin.storageCapacities.index');
+        $dataPage = $this->model->paginate(2);
+        return view('admin.storageCapacities.index', [
+            'data' => $dataPage
+        ]);
     }
 
     public function create()
@@ -44,18 +47,13 @@ class StorageCapacityController extends Controller
         ]);
     }
 
-    // public function update(UpdateCapacityRequest $request, $capacityId)
-    // {
-    //     $this->model->query()->where('id', $capacityId)->update($request->validated());
-    //     return redirect()->route('admin.storageCapacities.index');
-    // }
-
     public function getData()
     {
         try {
             $capacities = $this->model->all();
+            $dataPage = $this->model->paginate(2);
             if ($capacities) {
-                return response()->json(['status' => 'success', 'data' => $capacities], 200);
+                return response()->json(['status' => 'success', 'data' => $capacities, 'page' => $dataPage], 200);
             }
             throw new \Exception('Can not take data from database');
         }

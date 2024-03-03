@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\ProductController;
@@ -88,8 +89,8 @@ Route::group(['middleware' => 'auth.admin.login', 'prefix' => 'admin', 'as' => '
 
     // Route quản lý dung lượng sản phẩm
     Route::group(['prefix' => 'storageCapacities', 'as' => 'storageCapacities.'], function() {
+        // Route index
         Route::get('/', [StorageCapacityController::class, 'index'])->name('index');
-
         // Route api lấy dữ liệu về
         Route::get('/api', [StorageCapacityController::class, 'getData'])->name('indexAPI');
 
@@ -98,15 +99,31 @@ Route::group(['middleware' => 'auth.admin.login', 'prefix' => 'admin', 'as' => '
         Route::post('/api/create', [StorageCapacityController::class, 'addCapacity'])->name('storeAPI');
 
         Route::get('/edit/{capacityId}', [StorageCapacityController::class, 'edit'])->name('edit');
-        // Route::put('/edit/{capacityId}', [StorageCapacityController::class, 'update'])->name('update');
         // Route api cập nhật dữ liệu
         Route::put('/edit/api/{capacityId}', [StorageCapacityController::class, 'updateCapacity'])->name('updateAPI');
 
         // Route api xóa dữ liệu
-        Route::delete('/api/destroy/{capacityId}', [StorageCapacityController::class, 'destroyCapacity'])->name('destroyAPI');
+        Route::delete('/api/delete/{capacityId}', [StorageCapacityController::class, 'destroyCapacity'])->name('destroyAPI');
     });
 
     // Route quản lý màu sắc sản phẩm
+    Route::group(['prefix' => 'colors', 'as' => 'colors.'], function() {
+        // Route index
+        Route::get('/', [ColorController::class, 'index'])->name('index');
+        // Route lấy dữ liệu hiển thị
+        Route::get('/api', [ColorController::class, 'getData'])->name('indexAPI');
+
+        Route::get('/create', [ColorController::class, 'create'])->name('create');
+        // Route api thêm dữ liệu
+        Route::post('/api/create', [ColorController::class, 'addColor'])->name('storeAPI');
+
+        Route::get('/edit/{colorId}', [ColorController::class, 'edit'])->name('edit');
+        // Route api cập nhật sản phẩm
+        Route::put('/api/edit/{colorId}', [ColorController::class, 'updateColor'])->name('updateAPI');;
+
+        // Route api xóa dữ liệu
+        Route::delete('/api/delete/{colorId}', [ColorController::class, 'deleteColor'])->name('destroyAPI');
+    });
 });
 
 // Phía client

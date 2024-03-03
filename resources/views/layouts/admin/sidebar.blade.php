@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="nav-item menu">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.colors.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-paint-brush"></i>
                             <p>Colors</p>
                         </a>

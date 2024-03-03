@@ -15,64 +15,15 @@
                     <button class="edit-btn btn btn-primary" data-id="{{ $capacity->id }}">Edit</button>
                 </div>
             </form>
+            <div id="paginate"></div>
         </div>
     </div>
 @endsection
 @push('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let buttonEdit = document.querySelector('.edit-btn');
-            let input = document.querySelector('input[name=capacity]');
-            let errorMessage = document.getElementById('error-message');
-
-            input.addEventListener('focus', function() {
-                errorMessage.innerHTML = '';
-            });
-
-            input.addEventListener('keydown', function() {
-                errorMessage.innerHTML = '';
-            });
-
-            buttonEdit.addEventListener('click', function(event) {
-                event.preventDefault();
-                if (input.value === "") {
-                    errorMessage.innerHTML = 'Vui lòng nhập thông tin';
-                } else {
-                    const capacityId = event.target.dataset.id;
-                    updateCapacity(capacityId);
-                }
-            });
-
-            function updateCapacity(capacityId) {
-                let route = "{{ route('admin.storageCapacities.updateAPI', ['capacityId' => ':capacityId']) }}"
-                    .replace(':capacityId', capacityId)
-                let csrfToken = document.querySelector('input[name=_token]').value;
-                // let form = document.getElementById('form-edit');
-                // let formData = new FormData(form);
-                fetch(route, {
-                    method: 'PUT',
-                    headers: {
-                        'Accept': 'application/json, text/html',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'capacity': input.value,
-                        '_token': csrfToken
-                    })
-                })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.status == 'success') {
-                        alert('Sửa thành công');
-                        window.location.href = "{{ route('admin.storageCapacities.index') }}";
-                    }
-                })
-                .catch((error) => {
-                    alert('Thất bại');
-                })
-            }
-        });
+        const capacityId = document.querySelector('.edit-btn').getAttribute('data-id');
+        const routeUpdate = "{{ route('admin.storageCapacities.updateAPI', ['capacityId' => ':capacityId']) }}".replace(":capacityId", capacityId);
+        const routeHome = "{{ route('admin.storageCapacities.index') }}";
     </script>
+    <script src="{{ asset('js/admin/capacity/update.js') }}"></script>
 @endpush

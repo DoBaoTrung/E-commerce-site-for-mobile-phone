@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 @section('content')
     <div class="capacity-content card">
-        <div class="card-body">
+        <div class="capacity-table card-body">
             <a class="btn btn-success mb-3" href="{{ route('admin.storageCapacities.create') }}">Add</a>
             <table class="table table-bordered text-center">
                 <thead>
@@ -15,6 +15,9 @@
                 <tbody id="capacity-content">
                 </tbody>
             </table>
+            <div id="pagination" class="d-flex justify-content-center mt-3">
+                {{-- {{ $data->links() }} --}}
+            </div>
         </div>
     </div>
 @endsection
@@ -22,8 +25,10 @@
     <script>
         $(document).ready(function() {
             // Lấy dữ liệu về
-            function getData() {
-                let route = '{{ route('admin.storageCapacities.indexAPI') }}'
+            function getData(page) {
+                let route = `{{ route('admin.storageCapacities.indexAPI') }}?page=${page}`;
+                // let route = `{{ route('admin.storageCapacities.indexAPI') }}`;
+                console.log(route);
                 $.ajax({
                     type: "GET",
                     url: route,
@@ -31,8 +36,8 @@
                     dataType: "json",
                     success: function(response) {
                         if (response.status === 'success') {
-                            // console.log(response);
-                            let data = Array.from(response.data).map((record) => {
+                            console.log(response);
+                            let data = Array.from(response.page.data).map((record) => {
                                 return `
                                     <tr>
                                         <td class="align-middle">${record.id}</td>
@@ -52,6 +57,10 @@
                             });
 
                             $('#capacity-content').html(data.join(''));
+                            $('#pagination').empty();
+                            response.page.links.forEach((link, index) => {
+                                $('#pagination').append(`<a class="page-link" data-page="${index}" href="${link.url}">${link.label}</a>`);
+                            });
                         }
                     }
                 });
@@ -60,8 +69,7 @@
             function deleteOneCapacity(capacityId) {
                 let route = '{{ route('admin.storageCapacities.destroyAPI', ['capacityId' => ':capacityId']) }}'
                     .replace(':capacityId', capacityId);
-                let form = "#form-id".replace('id', capacityId);
-                // console.log($(form).serialize());
+                let form = "#form-id".replace('id', capacityId);  
                 $.ajax({
                     type: "DELETE",
                     url: route,
@@ -86,13 +94,21 @@
                 }
             });
 
-            getData();
+            getData(1);
 
             // Edit
             $('#capacity-content').on('click', '.btn-edit', function(event) {
                 let capacityId = $(this).data('id');
                 let routeEdit = "{{ route('admin.storageCapacities.edit', ['capacityId' => ':capacityId']) }}".replace(':capacityId', capacityId);
                 window.location.href = routeEdit;
+            });
+
+            // Pagination
+            $('.capacity-table').on('click', '.page-link', function(event) {
+                event.preventDefault();
+                let page = $(this).data('page');
+                // console.log($page);
+                getData(page);
             });
         });
     </script>
