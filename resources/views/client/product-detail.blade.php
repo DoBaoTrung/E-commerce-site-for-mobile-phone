@@ -18,9 +18,9 @@
                         </div>
                         @if (Auth::check())
                             <div class="order-product mt-4">
-                                <form action="{{ route('client.addToCart', ['id' => $product->id]) }}" method="POST">
+                                <form id="add-cart-form" method="POST">
                                     @csrf
-                                    <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i>
+                                    <button class="add-cart-btn btn btn-primary" data-id="{{ $product->id }}"><i class="fas fa-shopping-cart"></i>
                                         Add to cart</button>
                                 </form>
                             </div>
@@ -64,3 +64,35 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script type="module" src="{{ asset('js/client/app.js') }}"></script>
+    <script>
+        // let addCartForm = document.getElementById('add-cart-form');
+
+        // addCartForm.addEventListener('click', function(event) {
+        //     if (event.target.classList.contains('add-cart-btn')) {
+        //         event.preventDefault();
+        //         let productId = event.target.dataset.id;
+        //         let routeAddToCart = "{{ route('client.addToCart', ['id' => ':id']) }}".replace(':id', productId);
+        //         addToCart(routeAddToCart)
+        //     }
+        // });
+
+        // function addToCart(routeAddToCart)
+        // {
+        //     let csrfToken = document.querySelector('input[name="_token"]').value;
+
+        //     fetch(routeAddToCart, {
+        //         method: 'POST',
+        //         headers: {
+        //             'X-CSRF-Token': csrfToken,
+        //             'Accept': 'application/json'
+        //         }
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // }
+    </script>
+@endpush

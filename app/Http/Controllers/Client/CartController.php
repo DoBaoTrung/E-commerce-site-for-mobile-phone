@@ -79,7 +79,8 @@ class CartController extends Controller
             $cart->products()->attach($productId, $data);
         }
 
-        return redirect()->route('client.product.show', ['slug' => $product->slug]);
+        // return redirect()->route('client.product.show', ['slug' => $product->slug]);
+        return response()->json(['message' => 'success'], 200);
     }
 
     public function calculateTotalPrice($cartItems)
